@@ -12,7 +12,7 @@ void initlist(Node node){//初始化
 }//1.插入节点
 bool insertlist(Node head,E element,int index){
     if(index<1)return 0;
-    while(--index){//头结点一直往后走
+    while(--index){//找他的插入位置的前驱节点
         head = head->next;
         if(head==NULL)return 0;//不能越界(例如插在最后一个)
     }
@@ -23,16 +23,16 @@ bool insertlist(Node head,E element,int index){
     head->next = node;
     return 1;
 }//2.删除节点
-bool deletdlist(Node head,int index){//位序
+bool deletelist(Node head,int index){//位序
     if(index<1)return 0;
     while(--index){//不能删最后一个，越界了
         head=head->next;
         if(head == NULL)return 0;
     }
-    if(head->next == NULL)return 0;
+    if(head->next == NULL)return 0;//注意删除的范围，不能删最后一个
     Node temp =head->next;//先存一下，之后删
     head->next = head->next->next;//1.改其前驱节点
-    free(temp);//2.删去元素节点free
+    free(temp);//2.将其节点用free销毁
     return 1;
 }//3.获取对应位置的元素
 E * getlist(Node head,int index){
@@ -47,15 +47,15 @@ int findlist(Node head,E element){
     head = head->next;//因为头结点为随机值，从第一个开始算
     int i=1;//计数器
     while(head){//找到返回位序
-        if(head->element == element)return i;
+        if(head->element == element)return i;//顺序查找,找到返回位序
         head = head->next;
         i++;
     }
     return -1;//没找到返回-1
 }//5.获取链表的长度
 int sizelist(Node head){
-    int i=-1;//从-1开始，为了不计入头结点
-    while(head){//那么第一次就是检查head本身是否为空
+    int i=0;//从0开始，下一个是空就停止
+    while(head->next){
         head=head->next;
         i++;
     }
@@ -64,10 +64,20 @@ int sizelist(Node head){
 void printlist(Node head){//打印
     while(head->next){
         head =head->next;
-        printf("%d",head->element);
+        printf("%d ",head->element);
     }
+    printf("\n");
 }
 int main(){
     struct ListNode head;
     initlist(&head);
+    for(int i=1;i<4;i++){
+        insertlist(&head,i*10,i);
+    }
+    printlist(&head);
+    deletelist(&head,2);
+    printlist(&head);
+    printf("%d\n",*getlist(&head,1));
+    printf("%d\n",findlist(&head,100));
+    printf("%d\n",sizelist(&head));
 }

@@ -12,7 +12,7 @@ bool initqueue(ArrayQueue queue){//初始化
     queue->array=malloc(sizeof(E)*10);
     if(queue->array==NULL)return 0;
     queue->capacity=10;
-    queue->front=queue->rear=-1;
+    queue->front=queue->rear=0;
     return 1;
 }//1.入队
 bool offerqueue(ArrayQueue queue,E element){//注意要判断队列是否满

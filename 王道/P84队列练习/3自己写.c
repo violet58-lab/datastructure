@@ -5,8 +5,8 @@ bool Enqueue(int x){//将元素x入队
     }
     else if(StackOverflow(s1)&&StackEmpty(s2)){
         while(!StackEmpty(s1)){
-            push(s1,x);
-            pop(s2,x);
+            pop(s1,x);
+            push(s2,x);
         }
         push(s1,x);
         return 1;

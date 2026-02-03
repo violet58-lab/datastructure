@@ -1,17 +1,17 @@
 {
-  "configurations": [
-    {
-      "name": "Win32",
-      "intelliSenseMode": "windows-gcc-x64",
-      "compilerPath": "D:/msys2(cc++编译)/mingw64/bin/gcc.exe",
-      "includePath": [
-        "${workspaceFolder}/**",
-        "D:/msys2(cc++编译)/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-        "D:/msys2(cc++编译)/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
-        "D:/msys2(cc++编译)/mingw64/x86_64-w64-mingw32/include"
-      ],
-      "cStandard": "c11"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Win32",
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "D:/msys2(cc++编译)/mingw64/bin/g++.exe",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "D:/msys2(cc++编译)/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
+                "D:/msys2(cc++编译)/mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+                "D:/msys2(cc++编译)/mingw64/x86_64-w64-mingw32/include"
+            ],
+            "cStandard": "c11"
+        }
+    ],
+    "version": 4
 }

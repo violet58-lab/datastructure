@@ -7,7 +7,7 @@ int strStr(char* haystack, char* needle) {
     if (m == 0) return 0;
 
     // lps[i] = needle[0..i] 的最长真前后缀长度
-    int lps[10000];               // 你原来就假设 needle <= 10000
+    int lps[10000];              
     lps[0] = 0;
     for (int i = 1, len = 0; i < m; ) {
         if (needle[i] == needle[len]) {
@@ -19,7 +19,6 @@ int strStr(char* haystack, char* needle) {
         }
     }
 
-    // KMP 匹配
     for (int i = 0, j = 0; i < n; ) {
         if (haystack[i] == needle[j]) {
             i++; j++;
@@ -27,7 +26,7 @@ int strStr(char* haystack, char* needle) {
         } else if (j > 0) {
             j = lps[j - 1];
         } else {
-            i++;                  // 关键：j==0 失配时必须推进 i
+            i++;         
         }
     }
     return -1;

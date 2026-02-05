@@ -21,7 +21,7 @@ void get_nextval(SString t,int nextval[]){
 int index_kmp(SString s,SString t,int pos,int nextval[]){//从pos后面找
     int i=pos,j=1;
     while(i<=s.length && j<=t.length){//i,j都要满足
-        if(s.ch[i]==t.ch[j]){++i;++j;}//主串和子串依次匹配下一个字符
+        if(j==0 || s.ch[i]==t.ch[j]){++i;++j;}//主串和子串依次匹配下一个字符
         else {j=nextval[j];}//主串，子串长度回退
     }
     if(j>t.length)return i-t.length;//返回匹配的第一个字符下标

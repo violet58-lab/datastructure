@@ -62,9 +62,9 @@ void PostOrder(Node root){//先用符号位判断右孩子是否也遍历成功
             root->flag = 1;
             root = root->right;
         }else{
-            printf("%c",root->element);
+            printf("%c",root->element);//先输出，再出栈，因为popstack返回值可有可无
             popstack(&head);
-            root = NULL;
+            root = NULL;//跳过while，继续取栈里面的结点
         }
     }
 }

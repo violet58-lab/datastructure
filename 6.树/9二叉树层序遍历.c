@@ -51,9 +51,9 @@ T pollqueue(LinkedQueue queue){
 void LevelOrder(Node root){
     struct Queue queue;
     initqueue(&queue);
-    offerqueue(&queue,root);
+    offerqueue(&queue,root);//队首入队
     while(!isempty(&queue)){
-        Node node = pollqueue(&queue);
+        Node node = pollqueue(&queue);//队首出队，打印
         printf("%c",node->element);
         if(node->left)offerqueue(&queue,node->left);
         if(node->right)offerqueue(&queue,node->right);

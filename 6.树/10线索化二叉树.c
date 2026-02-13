@@ -37,7 +37,7 @@ void PreOrderThreaded(Node root){
         PreOrderThreaded(root->right);
 }
 
-void inorder(Node root){
+void preorder(Node root){
     while(root){
         printf("%c",root->element);
         if(root->lefttag==0)

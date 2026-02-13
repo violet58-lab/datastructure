@@ -43,7 +43,7 @@ T popstack(SNode head){
     return e;
 }
 
-void PreOrder(Node root){
+void PreOrder(Node root){//防止root为空直接结束循环
     struct StackNode head;//先定义栈
     initstack(&head);
     while(root || !isempty(&head)){

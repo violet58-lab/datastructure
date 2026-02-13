@@ -50,7 +50,7 @@ void InOrder(Node root){
         while(root){
             pushstack(&head,root);
             root=root->left;
-        }
+        }//第一步找最左，找到后直接输出
         Node node = popstack(&head);
         printf("%c",node->element);
         root = node->right;

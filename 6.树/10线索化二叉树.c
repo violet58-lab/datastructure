@@ -30,7 +30,7 @@ void PreOrderThreaded(Node root){
         pre->right=root;
         pre->righttag=1;
     }
-    pre = root;//更新一下pre
+    pre = root;//前序遍历中访问节点的前一个结点
     if(root->lefttag==0)//本身左边有节点才往左走
         PreOrderThreaded(root->left);
     if(root->righttag==0)
@@ -40,10 +40,41 @@ void PreOrderThreaded(Node root){
 void preorder(Node root){
     while(root){
         printf("%c",root->element);
-        if(root->lefttag==0)
+        if(root->lefttag==0)//本身有左结点
             root=root->left;
         else 
             root=root->right;
+    }
+}
+
+void InOrderThreaded(Node root){
+    if(root==NULL)return;
+    if(root->lefttag==0)
+        InOrderThreaded(root->left);//左边遍历结束之后再线索化
+    if(root->left==NULL){
+        root->left=pre;
+        root->lefttag=1;
+    }
+    if(pre && pre->right==NULL){
+        pre->right=root;
+        pre->righttag=1;
+    }
+    pre = root;
+    if(root->righttag==0)
+        InOrderThreaded(root->right);
+}
+
+void inorder(Node root){
+    while(root){
+        while(root && root->lefttag == 0){
+            root = root->left;
+        }
+        printf("%c",root->element);
+        while(root && root->righttag == 1){
+            root = root->right;
+            printf("%c",root->element);
+        }
+        root = root->right;
     }
 }
 
@@ -65,6 +96,6 @@ int main(){
     e->left=e->right=NULL;
     f->left=f->right=NULL;
     
-    PreOrderThreaded(a);
+    InOrderThreaded(a);
     inorder(a);
 }

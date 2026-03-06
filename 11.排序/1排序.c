@@ -74,7 +74,7 @@ void quickSort(int arr[],int start,int end){//快速排序，很重要
     arr[left] = pivot;//相遇的位置就是存放基准的位置了
     quickSort(arr,start,left-1);
     quickSort(arr,right+1,end);
-}
+}//不稳定
 
 void dualPivotquickSort(int arr[],int start,int end){//双轴快速排序
     if(start>=end)return;
@@ -98,6 +98,22 @@ void dualPivotquickSort(int arr[],int start,int end){//双轴快速排序
     dualPivotquickSort(arr,right+1,end);
 }
 
+void shellSort(int arr[],int size){
+    int delta = size/2;//size为奇，第一组有3个数
+    while(delta>=1){
+        for(int i=delta;i<size;++i){//前delta个元素被认为是各组的第一个，是有序的状态
+            int j=i,tmp = arr[i];
+            while(j>=delta && arr[j-delta]>tmp){
+                arr[j]=arr[j-delta];
+                j-=delta;
+            }
+            arr[j] = tmp;
+        }delta /= 2;//重复分
+    }
+}
+
+
+
 int main(){
     int arr[]={3,5,7,2,9,0,6,1,8,4};
 
@@ -106,7 +122,8 @@ int main(){
     // selectSort(arr,9);
     // selectSort1(arr,9);
     //quickSort(arr,0,9);
-    dualPivotquickSort(arr,0,9);
+    //dualPivotquickSort(arr,0,9);
+    shellSort(arr,10);
 
     for(int i=0;i<10;++i)
         printf("%d ",arr[i]);

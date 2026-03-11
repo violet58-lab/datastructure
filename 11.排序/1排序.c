@@ -112,10 +112,34 @@ void shellSort(int arr[],int size){
     }
 }
 
+//归并排序
+void merge(int arr[],int tmp[],int left,int leftEnd,int right,int rightEnd){
+    int i=left,size=rightEnd-left+1;//存一下数组长度，后面用来修改arr
+    while(left<=leftEnd && right <= rightEnd){//如果两边还有，看哪边小存哪边
+        if(arr[left] <= arr[right])//因为都是有序排的，所以只比较前一元素就可以
+            tmp[i++] = arr[left++];//先用再加
+        else
+            tmp[i++] = arr[right++];
+    }
+    while(left <= leftEnd)//如果右边存完，直接将左边按序存入
+        tmp[i++] = arr[left++];
+    while(right <= rightEnd)//同理
+        tmp[i++] = arr[right++];
+    for(int j=0;j<size;++j,rightEnd--)
+        arr[rightEnd] = tmp[rightEnd];
+}
 
+void mergeSort(int arr[],int tmp[],int start,int end){
+    if(start >= end)return ;
+    int mid = (start+end)/2;
+    mergeSort(arr,tmp,start,mid);
+    mergeSort(arr,tmp,mid+1,end);
+    merge(arr,tmp,start,mid,mid+1,end);//合并函数
+}
 
 int main(){
     int arr[]={3,5,7,2,9,0,6,1,8,4};
+    int tmp[10];
 
     // bubbleSort(arr,9);
     // insertSort1(arr,9);
@@ -123,7 +147,8 @@ int main(){
     // selectSort1(arr,9);
     //quickSort(arr,0,9);
     //dualPivotquickSort(arr,0,9);
-    shellSort(arr,10);
+    //shellSort(arr,10);
+    mergeSort(arr,tmp,0,9);
 
     for(int i=0;i<10;++i)
         printf("%d ",arr[i]);

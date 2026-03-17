@@ -65,8 +65,8 @@ void SelectSort1(int arr[],int size){//选择排序优化，小的往左走，�
 void quickSort(int arr[],int start,int end){//快速排序，很重要
     if(start>=end)return;
     int left=start,right=end,pivot=arr[left];//以第一个为基准
-    while(left<right){
-        while(left<right && arr[right]>=pivot)right--;
+    while(left<right){//只要两指针不相遇，就一直排
+        while(left<right && arr[right]>=pivot)right--;//先找右边，再找左边，遇到不符的直接覆盖
         arr[left] = arr[right];//遇到比基准小的，丢到左边去
         while(left<right && arr[left]<=pivot)left++;
         arr[right] = arr[left];//遇到比基准大的，丢到右边去

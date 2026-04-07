@@ -16,7 +16,7 @@ bool initqueue(ArrayQueue queue){//初始化
     return 1;
 }//1.入队
 bool offerqueue(ArrayQueue queue,E element){//注意要判断队列是否满
-    int pos=(queue->rear+1)%queue->capacity;
+    int pos=(queue->rear+1)%queue->capacity;//指针先移动再插入
     if(pos==queue->front)return 0;
     queue->rear=pos;
     queue->array[queue->rear]=element;

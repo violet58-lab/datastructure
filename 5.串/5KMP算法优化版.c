@@ -12,8 +12,8 @@ void get_nextval(SString t,int nextval[]){
     while(i<t.length){
         if(j==0||t.ch[i]==t.ch[j]){
             ++i;++j;
-            if(t.ch[i]!=t.ch[j])nextval[i]=j;
-            else nextval[i]=nextval[j];
+            if(t.ch[i]!=t.ch[j])nextval[i]=j;//不相等，直接变
+            else nextval[i]=nextval[j];//相等，把nextval[j]拿过来
         }
         else j=nextval[j];
     }
